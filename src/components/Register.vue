@@ -8,7 +8,7 @@
     <Input :label="'Email address'" :type="'email'"/>    
     <Input :label="'Password'" :type="'password'"/>
 
-    <Button type="submit">Register</Button>
+    <Button type="submit" :disabled="isLoading" @click="submitHandler">Register</Button>
   </form>
 </main>
 </template>
@@ -19,6 +19,17 @@ export default {
   data(){
     return{
       logo,
+    }
+  },
+  computed: {
+    isLoading(){
+      return this.$store.state.auth.isLoading
+    }
+  },
+  methods: {
+    submitHandler(e){
+      e.preventDefault();
+      this.$store.commit('setLoading')
     }
   }
 }
