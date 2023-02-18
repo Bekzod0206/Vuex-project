@@ -30,11 +30,12 @@ export default {
     submitHandler(e){
       e.preventDefault();
       const data = {
-        username: "belka",
-        email: 'infol@mail.ax',
+        username: "beslddka",
+        email: 'infssol@mail.ax',
         password: 'sasalssas'
       }
-      this.$store.dispatch('register', data)
+      this.$store
+        .dispatch('register', data)
         .then(user => console.log("USER", user))
         .catch(err => console.log("ERROR", err))
     }
