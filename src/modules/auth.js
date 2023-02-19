@@ -11,7 +11,7 @@ const mutations = {
   registerStart(state){
     state.isLoading = true
     state.user = null
-    state.error = null
+    state.errors = null
   },
   registerSuccess(state, payload){
     state.isLoading = false
@@ -19,7 +19,7 @@ const mutations = {
   },
   registerFailure(state, payload){
     state.isLoading = false
-    state.error = payload
+    state.errors = payload.errors
   },
 }
 
