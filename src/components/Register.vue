@@ -49,7 +49,7 @@ export default {
         .dispatch('register', data)
         .then(user => {
           console.log("USER", user)
-          this.$router.push({name: "home"}) //fushigi
+          this.$router.push({name: "home"}) 
         })
         .catch(err => console.log("ERROR", err))
     }

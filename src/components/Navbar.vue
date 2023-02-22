@@ -5,14 +5,20 @@
       </a>
 
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <Router-link :to="{name: 'login'}" class="me-3 py-2 text-dark text-decoration-none">Login</Router-link>
-        
-        <Router-link :to="{name: 'register'}" class="me-3 py-2 text-dark text-decoration-none">Register</Router-link>
+        <template v-if="isLoggedIn"> 
+          <Router-link :to="{name: 'home'}" class="me-3 py-2 text-dark text-decoration-none">{{ currentUser.username }}</Router-link>
+        </template>
+        <template v-if="!isLoggedIn">
+          <Router-link :to="{name: 'login'}" class="me-3 py-2 text-dark text-decoration-none">Login</Router-link>
+          
+          <Router-link :to="{name: 'register'}" class="me-3 py-2 text-dark text-decoration-none">Register</Router-link>
+        </template>
       </nav>
     </div>
 </template>
 
 <script>
+import {mapState} from "vuex"
 import {logo} from '../constants'
 export default {
   data(){
@@ -20,9 +26,15 @@ export default {
       logo,
     }
   },
+  computed: {
+    ...mapState({
+      currentUser: state => state.auth.user,
+      isLoggedIn: state => state.auth.isLoggedIn,
+    })
+  },
   methods: {
     toHomeHandler(){
-      return this.$router.push('/')
+      return this.$router.push({name: "home"})
     }
   }
 }
