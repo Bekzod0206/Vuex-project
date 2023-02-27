@@ -5,7 +5,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted() {
+    this.$store.dispatch('articleDetail', this.$route.params.slug)
+  }
+}
 </script>
 
 <style></style>
