@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <Register/>
+    <Register />
   </div>
 </template>
 
